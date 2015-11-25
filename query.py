@@ -16,4 +16,13 @@ def getXML(word):
     
     return result
 
-print getXML(raw_input())
+def breakIntoElements(xml):
+    xml = xml.split("<entry id=")
+    return xml;
+
+def findTag(xml,tag): 
+    xml = xml.split(tag)
+    tag = "</"+tag[1:]
+    xml[1] = xml[1].split(tag)
+    return xml[1][0]
+print findTag(breakIntoElements(getXML(raw_input()))[1],"<fl>")
